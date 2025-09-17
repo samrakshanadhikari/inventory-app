@@ -1,0 +1,96 @@
+mkdir -p lib
+cat > lib/auth.ts << 'TS'
+import type { NextAuthOptions } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
+import { prisma } from "./prisma";
+
+export const authOptions: NextAuthOptions = {
+  providers: [
+    Credentials({
+      name: "Dev login",
+      credentials: {
+        email: { label: "Email", type: "text" },
+        role:  { label: "Role",  type: "text" }
+      },
+      async authorize(creds) {
+        const email = (creds?.email || "").toString().toLowerCase();
+        const roleInput = (creds?.role || "").toUpperCase();
+        const user = await prisma.user.findUnique({ where: { email } });
+        if (!user) return null;
+        if (roleInput && roleInput !== user.role) return null;
+        return { id: user.id, email: user.email, name: user.name, role: user.role } as any;
+      }
+    })
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) (token as any).role = (user as any).role;
+      return token;
+    },
+    async session({ session, token }) {
+      (session as any).role = (token as any).role;
+      return session;
+    }
+  },
+  pages: { signIn: "/auth/signin" },
+  session: { strategy: "jwt" }
+};
+TS
+
+ls lib
+
+cd ~/inventory-app
+cp tsconfig.json tsconfig.bak || true
+cat > tsconfig.json << 'JSON'
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [{ "name": "next" }],
+    "baseUrl": ".",
+    "paths": { "@/*": ["./*"] }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+JSON
+
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
