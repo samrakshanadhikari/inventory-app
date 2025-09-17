@@ -4,7 +4,7 @@ A modern, full-stack inventory management application built with Next.js 15, Typ
 
 ## 🚀 Live Demo
 
-**Demo URL:** [Your deployed URL here]
+**Demo URL:** [Deploy to Vercel for live demo]
 
 **Demo Credentials:**
 - **Admin:** admin@example.com / password123
@@ -109,7 +109,7 @@ app/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/inventory-app.git
+   git clone https://github.com/samrakshanadhikari/inventory-app.git
    cd inventory-app
    ```
 
@@ -240,10 +240,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+**Samraksha Nadhikari**
+- GitHub: [@samrakshanadhikari](https://github.com/samrakshanadhikari)
+- LinkedIn: [Connect with me](https://linkedin.com/in/samrakshanadhikari)
+- Email: samraksha.nadhikari@example.com
 
 ## 🙏 Acknowledgments
 
