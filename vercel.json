@@ -1,11 +1,11 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run vercel-build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "npm install",
+  "installCommand": "npm install && npx prisma generate",
   "devCommand": "npm run dev",
   "env": {
     "NEXTAUTH_URL": "https://inventory-app-samrakshanadhikari.vercel.app",
-    "NEXTAUTH_SECRET": "your-production-secret-key-here"
+    "NEXTAUTH_SECRET": "inventory-app-production-secret-key-2024"
   }
 }
