@@ -21,16 +21,27 @@ export default function HomePage() {
       </nav>
 
       {/* Modern Hero Section */}
-      <header className="header">
+      <header className="header" style={{
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        color: 'white',
+        padding: '4rem 0',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
         <div className="container header-content">
           <div className="text-center animate-fadeIn">
-            <h1 className="text-5xl font-black text-white mb-6">
+            <h1 className="text-5xl font-black mb-6" style={{color: 'white'}}>
               Professional Inventory
-              <span className="block bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">
+              <span className="block" style={{
+                background: 'linear-gradient(45deg, #ffd700, #ff6b6b)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}>
                 Management System
               </span>
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
+            <p className="text-xl max-w-3xl mx-auto mb-8 leading-relaxed" style={{color: 'rgba(255,255,255,0.9)'}}>
               Streamline your IT operations with our enterprise-grade inventory management platform. 
               Built with modern technologies and designed for scalability.
             </p>

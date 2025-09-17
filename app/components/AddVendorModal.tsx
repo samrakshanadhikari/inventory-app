@@ -64,10 +64,10 @@ export default function AddVendorModal({ isOpen, onClose, onVendorAdded }: AddVe
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="card-premium max-w-md w-full p-6 animate-fadeInScale">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-white">Add New Vendor</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Add New Vendor</h2>
           <button
             onClick={onClose}
-            className="text-white/60 hover:text-white text-2xl transition-colors"
+            className="text-gray-500 hover:text-gray-700 text-2xl transition-colors"
           >
             ×
           </button>
@@ -139,3 +139,4 @@ export default function AddVendorModal({ isOpen, onClose, onVendorAdded }: AddVe
     </div>
   );
 }
+

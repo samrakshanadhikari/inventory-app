@@ -62,12 +62,12 @@ export default async function VendorsPage() {
               <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold glass text-white border border-white/20">
                 {session.role}
               </span>
-              <a 
-                href="/api/auth/signout"
+              <button 
+                onClick={() => window.location.href = '/api/auth/signout'}
                 className="text-white/70 hover:text-white text-sm font-medium transition-colors hover-glow"
               >
                 Sign out
-              </a>
+              </button>
             </div>
           </div>
         </div>

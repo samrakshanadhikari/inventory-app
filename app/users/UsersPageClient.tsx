@@ -11,9 +11,18 @@ interface UserWithCounts extends User {
   };
 }
 
+interface SessionWithRole {
+  user?: {
+    email?: string | null;
+    name?: string | null;
+  };
+  role?: string;
+  expires: string;
+}
+
 interface UsersPageClientProps {
   users: UserWithCounts[];
-  session: Session;
+  session: SessionWithRole;
 }
 
 export default function UsersPageClient({ users, session }: UsersPageClientProps) {
@@ -45,9 +54,12 @@ export default function UsersPageClient({ users, session }: UsersPageClientProps
               Welcome, {session?.user?.name || session?.user?.email}
             </span>
             <span className="badge badge-primary">{(session as any)?.role}</span>
-            <a href="/api/auth/signout" className="btn btn-ghost">
+            <button 
+              onClick={() => window.location.href = '/api/auth/signout'}
+              className="btn btn-ghost"
+            >
               Sign Out
-            </a>
+            </button>
           </div>
         </div>
       </nav>

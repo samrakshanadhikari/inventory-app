@@ -10,6 +10,7 @@ interface SessionWithRole {
     name?: string | null;
   };
   role?: string;
+  expires: string;
 }
 
 export default async function UsersPage() {

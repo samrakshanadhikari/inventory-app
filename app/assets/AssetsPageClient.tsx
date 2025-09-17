@@ -196,12 +196,12 @@ export default function AssetsPageClient({ initialAssets, vendors, users, sessio
               <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold glass text-white border border-white/20">
                 {session.role}
               </span>
-              <a 
-                href="/api/auth/signout"
+              <button 
+                onClick={() => window.location.href = '/api/auth/signout'}
                 className="text-white/70 hover:text-white text-sm font-medium transition-colors hover-glow"
               >
                 Sign out
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -292,20 +292,20 @@ export default function AssetsPageClient({ initialAssets, vendors, users, sessio
                 <table className="table-premium">
                   <thead>
                     <tr>
-                      <th className="text-white/80">Tag</th>
-                      <th className="text-white/80">Name</th>
-                      <th className="text-white/80">Status</th>
-                      <th className="text-white/80">Vendor</th>
-                      <th className="text-white/80">Assigned To</th>
-                      <th className="text-white/80">Date Added</th>
-                      <th className="text-white/80">Actions</th>
+                      <th className="text-gray-700">Tag</th>
+                      <th className="text-gray-700">Name</th>
+                      <th className="text-gray-700">Status</th>
+                      <th className="text-gray-700">Vendor</th>
+                      <th className="text-gray-700">Assigned To</th>
+                      <th className="text-gray-700">Date Added</th>
+                      <th className="text-gray-700">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredAssets.map((asset, index) => (
                       <tr key={asset.id} className="hover-lift" style={{animationDelay: `${index * 0.1}s`}}>
-                        <td className="text-white font-medium">{asset.tag}</td>
-                        <td className="text-white">{asset.name}</td>
+                        <td className="text-gray-900 font-medium">{asset.tag}</td>
+                        <td className="text-gray-900">{asset.name}</td>
                         <td>{getStatusBadge(asset.status)}</td>
                         <td>
                           {asset.vendor ? (
@@ -316,11 +316,11 @@ export default function AssetsPageClient({ initialAssets, vendors, users, sessio
                                 </span>
                               </div>
                               <div>
-                                <div className="text-white font-medium">{asset.vendor.name}</div>
+                                <div className="text-gray-900 font-medium">{asset.vendor.name}</div>
                               </div>
                             </div>
                           ) : (
-                            <span className="text-white/40">No vendor</span>
+                            <span className="text-gray-500">No vendor</span>
                           )}
                         </td>
                         <td>
@@ -332,15 +332,15 @@ export default function AssetsPageClient({ initialAssets, vendors, users, sessio
                                 </span>
                               </div>
                               <div>
-                                <div className="text-white font-medium">{asset.checkouts[0].user.name || 'Unknown User'}</div>
-                                <div className="text-white/40 text-xs">{asset.checkouts[0].user.email}</div>
+                                <div className="text-gray-900 font-medium">{asset.checkouts[0].user.name || 'Unknown User'}</div>
+                                <div className="text-gray-500 text-xs">{asset.checkouts[0].user.email}</div>
                               </div>
                             </div>
                           ) : (
-                            <span className="text-white/40">Unassigned</span>
+                            <span className="text-gray-500">Unassigned</span>
                           )}
                         </td>
-                        <td className="text-white/60">
+                        <td className="text-gray-600">
                           {new Date(asset.createdAt).toLocaleDateString()}
                         </td>
                         <td>
